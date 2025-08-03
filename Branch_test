@@ -4,10 +4,12 @@ pipeline {
     stages {
         stage('Main 브랜치에서만 실행') {
             when {
-                branch 'main'
+                expression {
+                    return env.GIT_BRANCH?.contains('main')
+                }
             }
             steps {
-                echo '이 단계는 main 브랜치에서만 실행됩니다.'
+                echo '🟢 이것은 main 브랜치에서 실행됩니다.'
             }
         }
 
@@ -16,12 +18,12 @@ pipeline {
                 echo '이건 항상 실행됨'
             }
         }
-	stage('브랜치 확인') {
+
+        stage('브랜치 확인') {
             steps {
                 sh 'git rev-parse --abbrev-ref HEAD'
-           }
+            }
         }
-
     }
 }
 
