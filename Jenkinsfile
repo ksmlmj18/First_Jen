@@ -2,14 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Clone App Code') {
             steps {
-                git url: 'https://github.com/ksmlmj18/First_Jen.git', branch: 'main'
+                git url: 'https://github.com/ksmlmj18/Second_Jen.git', branch: 'main'
             }
         }
-        stage('Build') {
+
+        stage('Deploy') {
             steps {
-                sh 'echo Build step 실행됨!'
+                sh 'chmod +x deploy.sh && ./deploy.sh'
             }
         }
     }
