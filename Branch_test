@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Main 브랜치에서만 실행') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo '이 단계는 main 브랜치에서만 실행됩니다.'
+            }
+        }
+
+        stage('모든 브랜치에서 실행') {
+            steps {
+                echo '이건 항상 실행됨'
+            }
+        }
+    }
+}
+
