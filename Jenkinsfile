@@ -2,10 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Greeting') {
+        stage('Checkout') {
             steps {
-                echo 'Hello from Jenkinsfile!'
+                git url: 'https://github.com/ksmlmj18/First_Jen.git', branch: 'main'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'echo Build step 실행됨!'
             }
         }
     }
 }
+:
